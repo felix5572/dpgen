@@ -55,8 +55,8 @@ def make_vasp(jdata, conf_dir) :
     # gen defomations
     # norm_strains = [-norm_def, -0.5*norm_def, 0.5*norm_def, norm_def]
     # shear_strains = [-shear_def, -0.5*shear_def, 0.5*shear_def, shear_def]
-    norm_strains = [norm_def*(ii*/norm_deform_num-1) for ii in range(norm_deform_num)]+[norm_def*(ii+1)/norm_deform_num for ii in range(norm_deform_num)]
-    shear_strains = [shear_def*(ii*/shear_deform_num-1) for ii in range(shear_deform_num)]+[shear_def*(ii+1)/shear_deform_num for ii in range(shear_deform_num)]
+    norm_strains = [norm_def*(ii/norm_deform_num-1) for ii in range(norm_deform_num)]+[norm_def*(ii+1)/norm_deform_num for ii in range(norm_deform_num)]
+    shear_strains = [shear_def*(ii/shear_deform_num-1) for ii in range(shear_deform_num)]+[shear_def*(ii+1)/shear_deform_num for ii in range(shear_deform_num)]
     dfm_ss = DeformedStructureSet(ss, 
                                   symmetry = False, 
                                   norm_strains = norm_strains,
@@ -177,8 +177,8 @@ def make_lammps(jdata, conf_dir,task_type) :
     # gen defomations
     # norm_strains = [-norm_def, -0.5*norm_def, 0.5*norm_def, norm_def]
     # shear_strains = [-shear_def, -0.5*shear_def, 0.5*shear_def, shear_def]
-    norm_strains = [norm_def*(ii*/norm_deform_num-1) for ii in range(norm_deform_num)]+[norm_def*(ii+1)/norm_deform_num for ii in range(norm_deform_num)]
-    shear_strains = [shear_def*(ii*/shear_deform_num-1) for ii in range(shear_deform_num)]+[shear_def*(ii+1)/shear_deform_num for ii in range(shear_deform_num)]
+    norm_strains = [norm_def*(ii/norm_deform_num-1) for ii in range(norm_deform_num)]+[norm_def*(ii+1)/norm_deform_num for ii in range(norm_deform_num)]
+    shear_strains = [shear_def*(ii/shear_deform_num-1) for ii in range(shear_deform_num)]+[shear_def*(ii+1)/shear_deform_num for ii in range(shear_deform_num)]
     print('gen with norm '+str(norm_strains))
     print('gen with shear '+str(shear_strains))
     dfm_ss = DeformedStructureSet(ss, 
