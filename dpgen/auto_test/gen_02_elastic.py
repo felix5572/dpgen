@@ -53,8 +53,10 @@ def make_vasp(jdata, conf_dir) :
     # gen strcture
     ss = Structure.from_file(task_poscar)
     # gen defomations
-    norm_strains = [-norm_def, -0.5*norm_def, 0.5*norm_def, norm_def]
-    shear_strains = [-shear_def, -0.5*shear_def, 0.5*shear_def, shear_def]
+    # norm_strains = [-norm_def, -0.5*norm_def, 0.5*norm_def, norm_def]
+    # shear_strains = [-shear_def, -0.5*shear_def, 0.5*shear_def, shear_def]
+    norm_strains = [norm_def*(ii*/norm_deform_num-1) for ii in range(norm_deform_num)]+[norm_def*(ii+1)/norm_deform_num for ii in range(norm_deform_num)]
+    shear_strains = [shear_def*(ii*/shear_deform_num-1) for ii in range(shear_deform_num)]+[shear_def*(ii+1)/shear_deform_num for ii in range(shear_deform_num)]
     dfm_ss = DeformedStructureSet(ss, 
                                   symmetry = False, 
                                   norm_strains = norm_strains,
@@ -147,7 +149,9 @@ def make_lammps(jdata, conf_dir,task_type) :
     ntypes = len(type_map)
 
     norm_def = jdata['norm_deform']
+    norm_deform_num=jdata.get('norm_deform_num',2)
     shear_def = jdata['shear_deform']
+    shear_deform_num=jdata.get('shear_deform_num',2)
 
     conf_path = os.path.abspath(conf_dir)
     conf_poscar = os.path.join(conf_path, 'POSCAR')
@@ -171,8 +175,10 @@ def make_lammps(jdata, conf_dir,task_type) :
     # print(ss)
     ss = Structure.from_file(task_poscar)
     # gen defomations
-    norm_strains = [-norm_def, -0.5*norm_def, 0.5*norm_def, norm_def]
-    shear_strains = [-shear_def, -0.5*shear_def, 0.5*shear_def, shear_def]
+    # norm_strains = [-norm_def, -0.5*norm_def, 0.5*norm_def, norm_def]
+    # shear_strains = [-shear_def, -0.5*shear_def, 0.5*shear_def, shear_def]
+    norm_strains = [norm_def*(ii*/norm_deform_num-1) for ii in range(norm_deform_num)]+[norm_def*(ii+1)/norm_deform_num for ii in range(norm_deform_num)]
+    shear_strains = [shear_def*(ii*/shear_deform_num-1) for ii in range(shear_deform_num)]+[shear_def*(ii+1)/shear_deform_num for ii in range(shear_deform_num)]
     print('gen with norm '+str(norm_strains))
     print('gen with shear '+str(shear_strains))
     dfm_ss = DeformedStructureSet(ss, 
