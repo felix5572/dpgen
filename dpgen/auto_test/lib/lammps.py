@@ -116,10 +116,10 @@ def inter_meam(param) :
     ret = ""
     line = "pair_style      meam \n"
     line+= "pair_coeff      * * %s " % param['model_name'][0]
-    for ii in param['param_type'] :
+    for ii in param['param_type'][0] :
         line += ii + ' '
     line+= "%s " % param['model_name'][1]
-    for ii in param['param_type'] :
+    for ii in param['param_type'][1] :
         line += ii + ' '
     line+= '\n'
     ret += line

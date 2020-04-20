@@ -89,6 +89,8 @@ class Slurm(Batch) :
             ret += "#SBATCH --qos=%s \n" % res['qos']
         if res['numb_gpu'] > 0 :
             ret += "#SBATCH --gres=gpu:%d\n" % res['numb_gpu']
+        if res.get('numb_dcu')  :
+            ret += "#SBATCH --gres=dcu:%d\n" % res['numb_dcu']
         for ii in res['constraint_list'] :
             ret += '#SBATCH -C %s \n' % ii
         for ii in res['license_list'] :
