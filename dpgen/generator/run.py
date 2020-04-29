@@ -453,11 +453,11 @@ def run_train (iter_index,
         ## Commands are like `dp train` and `dp freeze`
         ## train_command should not be None
         assert(train_command)
-        command =  '%s train %s' % (train_command, train_input_file)
+        command =  '%s' % (train_command)
         if training_init_model:
             command += ' --init-model old/model.ckpt'
         commands.append(command)
-        command = '%s freeze' % train_command
+        command = 'dp freeze' 
         commands.append(command)
 
     #_tasks = [os.path.basename(ii) for ii in all_task]

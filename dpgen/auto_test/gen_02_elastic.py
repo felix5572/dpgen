@@ -72,9 +72,9 @@ def make_vasp(jdata, conf_dir) :
         assert(os.path.exists(relax_incar_path))
         relax_incar_path = os.path.abspath(relax_incar_path)        
         incar = incar_upper(Incar.from_file(relax_incar_path))
-        if incar.get('ISIF') != 2:
-            dlog.info("%s:%s setting ISIF to 2" % (__file__, make_vasp.__name__))
-            incar['ISIF'] = 2
+        if incar.get('ISIF') != 3:
+            dlog.info("%s:%s setting ISIF to 3" % (__file__, make_vasp.__name__))
+            incar['ISIF'] = 3
         fc = incar.get_string()
         kspacing = incar['KSPACING']
         kgamma = incar['KGAMMA']
