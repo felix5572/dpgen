@@ -57,7 +57,7 @@ def make_vasp(jdata, conf_dir) :
         assert(os.path.exists(relax_incar_path))
         relax_incar_path = os.path.abspath(relax_incar_path)
         incar = incar_upper(Incar.from_file(relax_incar_path))
-        isif = 3
+        isif = 2
         if incar.get('ISIF') != isif:
             dlog.info("%s:%s setting ISIF to %d" % (__file__, make_vasp.__name__, isif))
             incar['ISIF'] = isif
